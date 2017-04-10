@@ -6,6 +6,11 @@ ADD https://github.com/dweeves/magmi-git/releases/download/0.7.22/magmi_full_0.7
 
 RUN unzip /tmp/magmi.zip -d /var/www/html/
 
-ADD 000-default.conf /etc/apache2/sites-available/
+COPY 000-default.conf /etc/apache2/sites-available/
+COPY /magmi/web/magmi_config_setup.php /var/www/html/magmi/web/
+COPY /magmi/web/magmi_upload.php /var/www/html/magmi/web/
+COPY /magmi/web/plugin_upload.php /var/www/html/magmi/web/
 
 RUN cd /etc/apache2/sites-enabled/ && ln -s ../sites-available/000-default.conf
+
+RUN chown -R www-data: /var/www/html/magmi/
