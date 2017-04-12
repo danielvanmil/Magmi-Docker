@@ -15,3 +15,5 @@ COPY /magmi/web/plugin_upload.php /var/www/html/magmi/web/
 RUN cd /etc/apache2/sites-enabled/ && ln -s ../sites-available/000-default.conf
 
 RUN chown -R www-data: /var/www/html/magmi/
+
+VOLUME /var/www/html/magmi/
